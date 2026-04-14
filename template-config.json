@@ -1,35 +1,38 @@
 {
   "template_id": "ev_pulse_showcase_2026",
-  "name": "EV Pulse Showcase",
-  "created_at": "2026-04-14T12:00:00Z",
-  "version": "1.0.0",
+  "name": "EV Pulse Showcase v2",
+  "created_at": "2026-04-14T12:30:00Z",
+  "version": "1.1.0",
   "theme": {
-    "style": "Intelligent Minimalism",
-    "description": "A sleek, futuristic dark-mode template for EV charging products. Features neon electric accents, smooth energy-flow animations, and live telemetry data displays (kW speed and battery %).",
+    "style": "Cinematic High-Tech Minimalism",
+    "description": "An ultra-premium, cinematic dark-mode template for EV products. Features multilayered depth, tech-mesh overlays, realistic energy flow, and live charging telemetry with fluctuating data.",
     "colors": ["#080c10", "#00f2ff", "#00ff9d"],
-    "mood": "futuristic, high-tech, clean, sustainable",
-    "tags": ["ev", "charging", "technology", "automotive", "premium", "telemetry"]
+    "mood": "cinematic, luxury, tech-forward, high-energy",
+    "tags": ["ev", "charging", "premium", "automotive", "2026", "motion-design"]
   },
   "capabilities": {
     "products_per_cycle": 1,
     "cycles_through_all_products": true
   },
   "animation": {
-    "duration": 12,
+    "duration": 14,
     "fps": 30,
-    "entrance_duration": 3,
+    "entrance_duration": 4,
     "idle_duration": 8,
-    "exit_duration": 1,
+    "exit_duration": 2,
     "uses_plugins": ["SplitText", "CustomEase", "DrawSVGPlugin"]
   },
   "assets": {
-    "background": "https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776154214831%2Fassets%2Fev_background_futuristic_garage-1776156242713.png",
-    "overlays": ["https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776154214831%2Fassets%2Fenergy_orb_cyan-1776156263415.png"],
+    "background": "https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776154214831%2Fassets%2Fev_charging_background_v2-1776157806993.png",
+    "overlays": [
+      "https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776154214831%2Fassets%2Ftech_overlay_elements-1776157826916.png",
+      "https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776154214831%2Fassets%2Fenergy_orb_cyan_fx-1776156604509.png"
+    ],
     "fonts": ["Lexend", "Outfit"]
   },
   "technical": {
     "resolution": "responsive",
-    "performance": "optimized",
+    "performance": "ultra-optimized",
     "browser_compatibility": "chrome_latest"
   }
 }

@@ -32,11 +32,33 @@ body {
 #background {
     position: absolute;
     inset: 0;
-    background-image: url('https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776154214831%2Fassets%2Fev_charging_station_background-1776156563507.png');
+    background-image: url('https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776154214831%2Fassets%2Fev_charging_background_v2-1776157806993.png');
     background-size: cover;
     background-position: center;
     z-index: 0;
-    opacity: 0.7;
+    opacity: 0.8;
+}
+
+#background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#foreground-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776154214831%2Fassets%2Ftech_overlay_elements-1776157826916.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 15;
+    pointer-events: none;
+    opacity: 0.2;
+    mix-blend-mode: screen;
 }
 
 #energy-network {
@@ -136,6 +158,22 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+#intro-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Lexend', sans-serif;
+    font-size: 4vw;
+    font-weight: 900;
+    color: var(--electric-cyan);
+    letter-spacing: 10px;
+    opacity: 0;
+    z-index: 100;
+    pointer-events: none;
+    text-shadow: 0 0 20px var(--electric-cyan);
 }
 
 header {

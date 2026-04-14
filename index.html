@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="manifest" href="./manifest.json">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -20,11 +19,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css?v=v1">
+    <link rel="stylesheet" href="style.css?v=v2">
 </head>
 <body>
     <div id="scene">
         <div id="background"></div>
+        <div id="foreground-overlay"></div>
 
         <div id="energy-network">
             <!-- SVG Energy Lines will be injected here -->
@@ -41,6 +41,7 @@
         </div>
 
         <div id="ui-layer">
+            <div id="intro-text">INITIATING POWER TRANSFER...</div>
             <header>
                 <div class="logo">EV<span>PULSE</span></div>
                 <div class="status-indicator">
@@ -77,15 +78,6 @@
             </footer>
         </div>
     </div>
-    <script src="animation.js?v=v1"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('./sw.js')
-          .then(function (reg) { console.log('[PWA] SW registered:', reg.scope); })
-          .catch(function (err) { console.warn('[PWA] SW registration failed:', err); });
-      });
-    }
-  </script>
+    <script src="animation.js?v=v2"></script>
 </body>
 </html>

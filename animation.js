@@ -122,6 +122,8 @@ function animateCycle(batchIndex) {
     const card = document.querySelector('.product-info-card');
     const lines = document.querySelectorAll('.pulse-line');
     const name = document.querySelector('.product-name');
+    const introText = document.getElementById('intro-text');
+    const overlay = document.getElementById('foreground-overlay');
     const statBoxes = document.querySelectorAll('.stat-box');
     const powerValue = document.getElementById('power-value');
     const chargeValue = document.getElementById('charge-value');
@@ -134,6 +136,7 @@ function animateCycle(batchIndex) {
     // 1. Entrance Phase
     tl.set(product, { opacity: 1 });
     tl.set(lines, { drawSVG: "0% 0%", opacity: 0.5 });
+    tl.set(overlay, { opacity: 0, scale: 1.1 });
 
     // Energy lines pulse towards center
     tl.to(lines, {
@@ -143,11 +146,34 @@ function animateCycle(batchIndex) {
         ease: "power2.inOut"
     });
 
+    // Intro Text Pulse
+    tl.to(introText, {
+        duration: 0.5,
+        opacity: 1,
+        scale: 1.1,
+        ease: "power2.out"
+    }, "-=1");
+    tl.to(introText, {
+        duration: 0.5,
+        opacity: 0,
+        scale: 1.5,
+        ease: "power2.in",
+        delay: 0.5
+    });
+
+    // Background Overlay Entrance
+    tl.to(overlay, {
+        duration: 2,
+        opacity: 0.2,
+        scale: 1,
+        ease: "power2.out"
+    }, "-=1.5");
+
     // Product Reveal
     tl.from(image, {
         duration: 2,
-        scale: 0.5,
-        y: 100,
+        scale: 0.3,
+        rotationY: 45,
         opacity: 0,
         ease: "expo.out"
     }, "-=1");
@@ -207,7 +233,17 @@ function animateCycle(batchIndex) {
 
     tl.to(image, {
         duration: 4,
-        y: "-=20",
+        y: "-=30",
+        rotationZ: "random(-2, 2)",
+        repeat: 1,
+        yoyo: true,
+        ease: "sine.inOut"
+    }, "living");
+
+    tl.to(overlay, {
+        duration: 8,
+        scale: 1.05,
+        rotation: 5,
         repeat: 1,
         yoyo: true,
         ease: "sine.inOut"
