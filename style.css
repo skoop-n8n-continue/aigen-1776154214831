@@ -1,0 +1,251 @@
+:root {
+    --bg-dark: #080c10;
+    --electric-cyan: #00f2ff;
+    --neo-mint: #00ff9d;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.6);
+    --ui-blur: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background: var(--bg-dark);
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-primary);
+}
+
+#scene {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+#background {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776154214831%2Fassets%2Fev_background_futuristic_garage-1776156242713.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    opacity: 0.7;
+}
+
+#energy-network {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+}
+
+#pulse-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.pulse-line {
+    fill: none;
+    stroke: var(--electric-cyan);
+    stroke-width: 2;
+    opacity: 0.3;
+    filter: blur(1px);
+}
+
+#products-container {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+
+.product-image-wrapper {
+    position: relative;
+    width: 60vh;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    z-index: 2;
+    filter: drop-shadow(0 0 30px rgba(0, 242, 255, 0.3));
+}
+
+.product-glow-ring {
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 242, 255, 0.2) 0%, transparent 70%);
+    z-index: 1;
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+#foreground-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.glow-orb {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background-image: url('https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776154214831%2Fassets%2Fenergy_orb_cyan-1776156263415.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    filter: blur(40px);
+}
+
+.orb-1 { top: -100px; left: -100px; }
+.orb-2 { bottom: -100px; right: -100px; }
+
+#ui-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 30;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.logo {
+    font-family: 'Lexend', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--electric-cyan);
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--ui-blur);
+    backdrop-filter: blur(10px);
+    padding: 8px 20px;
+    border-radius: 100px;
+    border: 1px solid var(--card-border);
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--neo-mint);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--neo-mint);
+}
+
+#data-overlay {
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 400px;
+}
+
+.product-info-card {
+    background: var(--ui-blur);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    padding: 40px;
+    border-radius: 24px;
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.product-name {
+    font-family: 'Lexend', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.product-price {
+    font-size: 24px;
+    color: var(--electric-cyan);
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.meta-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.meta-tag {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#global-footer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+}
+
+.divider {
+    width: 40px;
+    height: 1px;
+    background: var(--card-border);
+}
+
+#time-display {
+    margin-left: auto;
+    font-family: monospace;
+    color: var(--electric-cyan);
+}
+
+/* Animations classes */
+.reveal-text {
+    overflow: hidden;
+}

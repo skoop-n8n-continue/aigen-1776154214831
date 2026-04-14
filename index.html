@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>EV Pulse Showcase</title>
+
+    <!-- GSAP Core + Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/CustomEase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/DrawSVGPlugin.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css?v=v1">
+</head>
+<body>
+    <div id="scene">
+        <div id="background"></div>
+
+        <div id="energy-network">
+            <!-- SVG Energy Lines will be injected here -->
+            <svg id="pulse-svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+                <g id="lines-container"></g>
+            </svg>
+        </div>
+
+        <div id="products-container"></div>
+
+        <div id="foreground-layer">
+            <div class="glow-orb orb-1"></div>
+            <div class="glow-orb orb-2"></div>
+        </div>
+
+        <div id="ui-layer">
+            <header>
+                <div class="logo">EV<span>PULSE</span></div>
+                <div class="status-indicator">
+                    <div class="pulse-dot"></div>
+                    <span>SYSTEM ACTIVE</span>
+                </div>
+            </header>
+
+            <div id="data-overlay">
+                <!-- Product meta data injected here -->
+            </div>
+
+            <footer id="global-footer">
+                <div class="footer-segment">ENERGY OPTIMIZED</div>
+                <div class="footer-segment divider"></div>
+                <div class="footer-segment">FAST CHARGING ENABLED</div>
+                <div class="footer-segment divider"></div>
+                <div class="footer-segment" id="time-display">00:00:00</div>
+            </footer>
+        </div>
+    </div>
+    <script src="animation.js?v=v1"></script>
+</body>
+</html>
