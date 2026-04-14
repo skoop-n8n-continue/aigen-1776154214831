@@ -5,10 +5,10 @@
   "version": "1.0.0",
   "theme": {
     "style": "Intelligent Minimalism",
-    "description": "A sleek, futuristic dark-mode template for EV charging products. Features neon electric accents and smooth energy-flow animations.",
+    "description": "A sleek, futuristic dark-mode template for EV charging products. Features neon electric accents, smooth energy-flow animations, and live telemetry data displays (kW speed and battery %).",
     "colors": ["#080c10", "#00f2ff", "#00ff9d"],
     "mood": "futuristic, high-tech, clean, sustainable",
-    "tags": ["ev", "charging", "technology", "automotive", "premium"]
+    "tags": ["ev", "charging", "technology", "automotive", "premium", "telemetry"]
   },
   "capabilities": {
     "products_per_cycle": 1,

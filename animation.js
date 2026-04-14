@@ -122,6 +122,14 @@ function animateCycle(batchIndex) {
     const card = document.querySelector('.product-info-card');
     const lines = document.querySelectorAll('.pulse-line');
     const name = document.querySelector('.product-name');
+    const statBoxes = document.querySelectorAll('.stat-box');
+    const powerValue = document.getElementById('power-value');
+    const chargeValue = document.getElementById('charge-value');
+    const powerBar = document.getElementById('power-bar');
+    const batteryFill = document.getElementById('battery-fill');
+
+    // Stats proxy for animation
+    const stats = { power: 0, charge: 0 };
 
     // 1. Entrance Phase
     tl.set(product, { opacity: 1 });
@@ -159,6 +167,14 @@ function animateCycle(batchIndex) {
         ease: "power3.out"
     }, "-=1");
 
+    tl.to(statBoxes, {
+        duration: 1,
+        x: 0,
+        opacity: 1,
+        stagger: 0.2,
+        ease: "power3.out"
+    }, "-=0.8");
+
     // Split text animation for name
     if (typeof SplitText !== 'undefined') {
         const split = new SplitText(name, { type: "words,chars" });
@@ -171,14 +187,31 @@ function animateCycle(batchIndex) {
         }, "-=0.8");
     }
 
-    // 2. Living Moment (Idle)
+    // 2. Living Moment (Idle & Live Stats)
+    // Animate stats values
+    const targetPower = 150 + Math.random() * 200;
+    const targetCharge = 20 + Math.floor(Math.random() * 60);
+
+    tl.to(stats, {
+        power: targetPower,
+        charge: targetCharge,
+        duration: 3,
+        ease: "power2.out",
+        onUpdate: () => {
+            powerValue.textContent = stats.power.toFixed(1);
+            chargeValue.textContent = Math.floor(stats.charge);
+            powerBar.style.width = `${(stats.power / 350) * 100}%`;
+            batteryFill.style.width = `${stats.charge}%`;
+        }
+    }, "living");
+
     tl.to(image, {
         duration: 4,
         y: "-=20",
         repeat: 1,
         yoyo: true,
         ease: "sine.inOut"
-    });
+    }, "living");
 
     tl.to(ring, {
         duration: 4,
@@ -187,7 +220,7 @@ function animateCycle(batchIndex) {
         repeat: 1,
         yoyo: true,
         ease: "none"
-    }, "-=8");
+    }, "living");
 
     // Random energy pulses during idle
     tl.to(lines, {
@@ -200,13 +233,27 @@ function animateCycle(batchIndex) {
             yoyo: true
         },
         ease: "none"
-    }, "-=8");
+    }, "living");
+
+    // Fluctuate power during idle
+    tl.to(stats, {
+        power: "+=15",
+        duration: 0.5,
+        repeat: 10,
+        yoyo: true,
+        ease: "sine.inOut",
+        onUpdate: () => {
+            powerValue.textContent = stats.power.toFixed(1);
+            powerBar.style.width = `${(stats.power / 350) * 100}%`;
+        }
+    }, "living+=3");
 
     // 3. Exit Phase
-    tl.to(card, {
+    tl.to([card, ...statBoxes], {
         duration: 0.8,
-        x: -100,
+        x: (i) => i === 0 ? -100 : 100,
         opacity: 0,
+        stagger: 0.1,
         ease: "power3.in"
     });
 
